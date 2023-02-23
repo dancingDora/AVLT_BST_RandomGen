@@ -1,0 +1,3 @@
+/Users/luyifan/Downloads/hw1 2/cmake-build-debug/CMakeFiles/hw1_2.dir
+/Users/luyifan/Downloads/hw1 2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/luyifan/Downloads/hw1 2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
