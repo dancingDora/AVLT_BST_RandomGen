@@ -17,7 +17,7 @@ int genRandomDel(int n) {
     return rand() % n;
 }
 int main() {
-    ifstream fin("dataGen1");
+    ifstream fin("dataGen6");
     ofstream fout("test1.txt");
     std::srand(time(0));
     int n;
@@ -31,13 +31,11 @@ int main() {
         a[i] = tmp;
     }
 
-    fout << 'i' << endl;
 
     for (auto it: table) {
         fout << it << endl;
     }
 
-    fout << 'r' << endl;
 
     for(int i = 0; i < n/10; ++i) {
         int tmp = genRandomDel(n);
@@ -47,13 +45,11 @@ int main() {
         fout << a[tmp] << endl;
     }
 //the second time
-    fout << 'i' << endl;
 
     for (auto it: table) {
         fout << it << endl;
     }
 
-    fout << 'r' << endl;
 
     for(int i = 0; i < n/10; ++i) {
         int tmp = genRandomDel(n);

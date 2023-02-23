@@ -1,0 +1,2 @@
+AVL Tree use time : 211276
+Binary Search Tree use time : 265828

@@ -315,35 +315,34 @@ int main() {
     ofstream fout("ans1.txt");
 
     int e;
-    char ir;
-
+    const int n = 100000;
     clock_t start = clock();
     AVL<int> avl;
-    for(int i = 1; i <= 50; i++) {
+    for(int i = 1; i <= n; i++) {
         fin >> e;
         avl.insert(e);
     }
-    for(int i = 1; i <= 5; i++) {
+    for(int i = 1; i <= n/10; i++) {
         fin >> e;
         avl.remove(e);
     }
     clock_t end = clock();
-    double elapsed_secs = static_cast<double>(end - start) / CLOCKS_PER_SEC;
-    fout << "AVL Tree use time : " << fixed << setprecision(2) << elapsed_secs << '\n';
+    double elapsed_secs = static_cast<double>(end - start);
+    fout << "AVL Tree use time : " << elapsed_secs << '\n';
 
     start = clock();
     BST<int> bst;
-    for(int i = 1; i <= 50; i++) {
+    for(int i = 1; i <= n; i++) {
         fin >> e;
         bst.insert(e);
     }
-    for(int i = 1; i <= 5; i++) {
+    for(int i = 1; i <= n/10; i++) {
         fin >> e;
         bst.remove(e);
     }
     end = clock();
-    elapsed_secs = static_cast<double>(end - start) / CLOCKS_PER_SEC;
-    fout << "Binary Search Tree use time : " << fixed << setprecision(2) << elapsed_secs << '\n';
+    elapsed_secs = static_cast<double>(end - start) ;
+    fout << "Binary Search Tree use time : " << elapsed_secs << '\n';
 
     return 0;
 }
