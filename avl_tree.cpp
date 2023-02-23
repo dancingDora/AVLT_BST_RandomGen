@@ -1,4 +1,13 @@
-#include<iostream>
+#include <iostream>
+#include <stdlib.h>
+#include <ctime>
+#include <fstream>
+//clock_t start = clock();
+//// do something...
+//clock_t end = clock();
+//double elapsed_secs = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+//std::cout << elapsed_secs << " s" << endl;
+
 
 using namespace std;
 
@@ -187,105 +196,11 @@ private:
     }
 };
 
-
-//template<typename T>
-//class BST {
-//public:
-//    node<T> *root;
-//    int num;
-//    BST(){root = nullptr, num = 0;};
-//
-//public:
-//    void inorder() {
-//        inorderUtil(root);
-//        cout << endl;
-//    }
-//    void inorderUtil(node<T> *head) {
-//        if (head == NULL) return;
-//        inorderUtil(head->left);
-//        cout << head->key << " ";
-//        inorderUtil(head->right);
-//    }
-//
-//    void insert(T x) {
-//        node<T> *ans = new node<T>(x);
-//        if(root == nullptr) root = ans;
-//        node<T> *z = root;
-//        node<T> *des = root;
-//        while(z != nullptr) {
-//            des = z;
-//            if(x > z->key) z = z->right;
-//            else if(x < z->key) z = z->right;
-//            else cerr << "[Invalid Insert]Insert the same enum.\n";
-//        }
-//        if(ans->key > des->key) des->right = ans;
-//        else if(ans->key < des->key) des->left = ans;
-//    }
-//    void remove(T x) {
-//        //case 1: without left or right;
-//        //case 2: has only left or right;(judge the node is root or not)
-//        //case 3: has both left and right;
-//        if(root == nullptr) {
-//            cerr << "[Invalid Remove]The BST is empty.";
-//            return;
-//        }
-//        node<T> *del = root;
-//        node<T> *delP = root;
-//        while(x != del->key) {
-//            delP = del;
-//            if(x > del->key) del = del->right;
-//            else if(x < del->key) del = del->left;
-//        }
-//        if(del->left == nullptr && del->right == nullptr) {
-//            if(del->key > delP->key) delP->right = nullptr;
-//            else if(del->key < delP->key) delP->left = nullptr;
-//            else del = nullptr;
-//            delete del;
-//        }
-//        else if(del->left == nullptr && del->right != nullptr) {
-//            if(del->key > delP->key) delP->right = del->right;
-//            else if(del->key > delP->key) delP->left = del->right;
-//            else root = del->right;
-//            delete del;
-//        }
-//        else if(del->right == nullptr && del->left != nullptr) {
-//            if(del->key > delP->key) delP->right = del->left;
-//            else if(del->key < delP->key) delP->left = del->left;
-//            else root = del->right;
-//            delete del;
-//        }
-//        else if(del->right != nullptr && del->left != nullptr) {
-//            // 1) find the successor node
-//            node<T> *p = del->right;
-//            if(p != nullptr) {
-//                while(p->left != nullptr) {
-//                    p = p->left;
-//                }
-//            }
-//            //then p is the successor node
-//            // 2) swap the key of successor and the del
-//            del->key = p->key;
-//            // 3) delete the del
-//            node<T> *cash = del->right;
-//            if(cash != nullptr) {
-//                while(cash->key != del->key) {
-//                    cash = cash->left;
-//                }
-//                cash = nullptr;
-//                delete cash;
-//            }
-//
-//        }
-//    }
-//
-//};
-//二叉搜索树结点类型
 template<typename T>
 struct BSTNode {
-    T data;    //数据域
-    BSTNode<T> *left, *right;    //左子女、右子女
-    BSTNode() : left(NULL), right(NULL) {}    //构造函数
-    //构造函数
+    T data;
+    BSTNode<T> *left, *right;
+    BSTNode() : left(NULL), right(NULL) {}
     BSTNode(const T d, BSTNode<T> *L = NULL, BSTNode<T> *R = NULL) : data(d), left(L), right(R) {}
 };
 
@@ -396,41 +311,41 @@ protected:
 };
 
 int main() {
+    ifstream fin("test1.txt");
+    ofstream fout("ans1.txt");
+
+    int e;
+    char ir;
+
+    clock_t start = clock();
     AVL<int> avl;
+    for(int i = 1; i <= 50; i++) {
+        fin >> e;
+        avl.insert(e);
+    }
+    for(int i = 1; i <= 5; i++) {
+        fin >> e;
+        avl.remove(e);
+    }
+    clock_t end = clock();
+    double elapsed_secs = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+    fout << "AVL Tree use time : " << fixed << setprecision(2) << elapsed_secs << '\n';
+
+    start = clock();
     BST<int> bst;
-    BST<int> tree;
-    tree.insert(3);
-    tree.insert(2);
-    tree.insert(1);
-    tree.insert(4);
-    tree.insert(5);
-    tree.insert(6);
-    tree.insert(7);
-
-    tree.insert(16);
-    tree.insert(15);
-    tree.insert(14);
-    tree.insert(13);
-    tree.insert(12);
-    tree.insert(11);
-    tree.insert(10);
-    tree.insert(8);
-    tree.insert(9);
-
-
-    tree.inorder();
-    cout << endl;
-
-    tree.remove(8);
-    tree.inorder();
-    cout << endl;
-    tree.remove(7);
-    tree.remove(6);
-    tree.inorder();
-    cout << endl;
+    for(int i = 1; i <= 50; i++) {
+        fin >> e;
+        bst.insert(e);
+    }
+    for(int i = 1; i <= 5; i++) {
+        fin >> e;
+        bst.remove(e);
+    }
+    end = clock();
+    elapsed_secs = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+    fout << "Binary Search Tree use time : " << fixed << setprecision(2) << elapsed_secs << '\n';
 
     return 0;
-    // Design your program
 }
 
 

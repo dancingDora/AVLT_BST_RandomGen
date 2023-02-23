@@ -46,8 +46,8 @@ cmake_ninja_workdir = /Users/luyifan/Downloads/hw1$ 2/cmake-build-debug/
 
 build cmake_object_order_depends_target_hw1_2: phony || CMakeFiles/hw1_2.dir
 
-build CMakeFiles/hw1_2.dir/avl_tree.cpp.o: CXX_COMPILER__hw1_2_Debug /Users/luyifan/Downloads/hw1$ 2/avl_tree.cpp || cmake_object_order_depends_target_hw1_2
-  DEP_FILE = CMakeFiles/hw1_2.dir/avl_tree.cpp.o.d
+build CMakeFiles/hw1_2.dir/dataGen.cpp.o: CXX_COMPILER__hw1_2_Debug /Users/luyifan/Downloads/hw1$ 2/dataGen.cpp || cmake_object_order_depends_target_hw1_2
+  DEP_FILE = CMakeFiles/hw1_2.dir/dataGen.cpp.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -fcolor-diagnostics -std=gnu++14
   OBJECT_DIR = CMakeFiles/hw1_2.dir
   OBJECT_FILE_DIR = CMakeFiles/hw1_2.dir
@@ -60,7 +60,7 @@ build CMakeFiles/hw1_2.dir/avl_tree.cpp.o: CXX_COMPILER__hw1_2_Debug /Users/luyi
 #############################################
 # Link the executable hw1_2
 
-build hw1_2: CXX_EXECUTABLE_LINKER__hw1_2_Debug CMakeFiles/hw1_2.dir/avl_tree.cpp.o
+build hw1_2: CXX_EXECUTABLE_LINKER__hw1_2_Debug CMakeFiles/hw1_2.dir/dataGen.cpp.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7
   OBJECT_DIR = CMakeFiles/hw1_2.dir
   POST_BUILD = :
