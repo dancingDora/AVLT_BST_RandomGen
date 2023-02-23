@@ -195,42 +195,48 @@ private:
 
 template<typename T>
 class BST {
-    // TODO: finish BST according to AVL
 public:
-    node<T> *root = NULL;
+    node<T> *root;
     int num;
+    BST(){root = nullptr, num = 0;};
 
+public:
     void insert(T x) {
-        root = insertUtil(root, x);
+        node<T> *ans = new node<T>(x);
+        if(root == nullptr) root = ans;
+        node<T> *z = root;
+        node<T> *des = root;
+        while(z != nullptr) {
+            des = z;
+            if(x > z->key) z = z->right;
+            else if(x < z->key) z = z->right;
+            else cerr << "[Invalid Insert]Insert the same enum.\n";
+        }
+        if(ans->key > des->key) des->right = ans;
+        else if(ans->key < des->key) des->left = ans;
     }
-
     void remove(T x) {
-        node<T> *del = searchUtil(root, x);
-        if(del != NULL)
-            root = removeUtil(root, del);
-    }
-
-    node<T> *search(T x) {
-        return searchUtil(root, x);
-    }
-
-    void inorder() {
-        inorderUtil(root);
-        cout << endl;
-    }
-private:
-    node<T> insertUtil(node<T> *head, T x) {
-        if(head == NULL) {
-            head = new node<T>(x, NULL, NULL);
+        //case 1: without left or right;
+        //case 2: has only left or right;(judge the node is root or not)
+        //case 3: has both left and right;
+        if(root == nullptr) {
+            cerr << "[Invalid Remove]The BST is empty.";
+            return;
         }
-        else if(x < head->key) { //key insert
+        node<T> *del = root;
+        node<T> *delP = root;
+        while(x != del->key) {
+            delP = del;
+            if(x > del->key) del = del->right;
+            else if(x < del->key) del = del->left;
+        }
+        if(del->left == nullptr && del->right == nullptr) {
 
         }
     }
-    node<T> removeUtil(node<T> *head, T x) {
+    node<T> * search(T x) {
 
     }
-
 };
 
 
