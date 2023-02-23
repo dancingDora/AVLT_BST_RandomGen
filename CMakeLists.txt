@@ -3,4 +3,4 @@ project(hw1_2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(hw1_2 avl_tree.cpp.cpp)
+add_executable(hw1_2 avl_tree.cpp)
