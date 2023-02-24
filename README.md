@@ -1,4 +1,6 @@
 # AVL Tree & BST
+## EXERCISE 1
+![img_6.png](img_6.png)
 ## 随机数生成代码
 见dataGen.cpp
 
